@@ -1,4 +1,4 @@
-const { User, sequelize } = require("../models");
+const { UserRepository } = require('../repositories')
 
 class UserService {
   static async signUp(params) {
@@ -12,7 +12,7 @@ class UserService {
 
     try {
       const avatar = `avatar/${params.file.filename}`
-      const user = await User.create({ name, email, password, avatar });
+      const user = await UserRepository.create({ name, email, password, avatar });
       
       let result = {
         id: user.id,
