@@ -13,19 +13,11 @@ class UserService {
     try {
       const avatar = `avatar/${params.file.filename}`
       const user = await UserRepository.create({ name, email, password, avatar });
-      
-      let result = {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        avatar: user.avatar
-      }
 
       return {
         status: true,
-        response: result
+        response: user
       }
-
     } catch (err) {
       return err;
     }
